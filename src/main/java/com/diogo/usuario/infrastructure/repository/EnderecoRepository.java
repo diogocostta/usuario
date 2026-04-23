@@ -1,6 +1,6 @@
 package com.diogo.usuario.infrastructure.repository;
 
-import com.diogo.aprendendospring.infrastructure.entity.Endereco;
+import com.diogo.usuario.infrastructure.entity.Endereco;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
