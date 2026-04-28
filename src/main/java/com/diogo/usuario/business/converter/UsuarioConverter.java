@@ -58,7 +58,7 @@ public class UsuarioConverter {
 
     //Divisão de conversão de Entity para DTO
 
-    public UsuarioDTO paraUsuario (Usuario usuarioDTO){
+    public UsuarioDTO paraUsuarioDTO (Usuario usuarioDTO){
         return UsuarioDTO.builder()
                 .nome(usuarioDTO.getNome())
                 .email(usuarioDTO.getEmail())
@@ -96,6 +96,18 @@ public class UsuarioConverter {
                 .ddd(telefoneDTO.getDdd())
                 .numero(telefoneDTO.getNumero())
                 .build();
+    }
+
+    public Usuario updateUsuario (UsuarioDTO usuarioDTO, Usuario entity){
+        return Usuario.builder()
+                .id(entity.getId())
+                .enderecos(entity.getEnderecos())
+                .telefones(entity.getTelefones())
+                .nome(usuarioDTO.getNome() != null ? usuarioDTO.getNome() : entity.getNome())
+                .senha(usuarioDTO.getSenha() != null ? usuarioDTO.getSenha() : entity.getSenha())
+                .email(usuarioDTO.getEmail() != null ? usuarioDTO.getEmail() : entity.getEmail())
+                .build();
+
     }
 
 }
