@@ -1,7 +1,10 @@
 package com.diogo.usuario.controller;
 
 import com.diogo.usuario.business.UsuarioService;
+import com.diogo.usuario.business.dto.EnderecoDTO;
+import com.diogo.usuario.business.dto.TelefoneDTO;
 import com.diogo.usuario.business.dto.UsuarioDTO;
+import com.diogo.usuario.infrastructure.entity.Telefone;
 import com.diogo.usuario.infrastructure.entity.Usuario;
 import com.diogo.usuario.infrastructure.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +38,7 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public ResponseEntity<Usuario> buscaUsuarioPorEmail(@RequestParam ("email")String email){
+    public ResponseEntity<UsuarioDTO> buscaUsuarioPorEmail(@RequestParam ("email")String email){
         return ResponseEntity.ok(usuarioService.buscarUsuarioPorEmail(email));
     }
     @DeleteMapping("/{email}")
@@ -49,7 +52,16 @@ public class UsuarioController {
                                                           @RequestHeader("Authorization") String token) {
         return ResponseEntity.ok(usuarioService.ataualizaDadosUsuario(token, dto));
     }
-
+    @PutMapping("/endereco")
+    public ResponseEntity<EnderecoDTO> atualizaEndereco (@RequestBody EnderecoDTO dto, @RequestParam("id")
+                                                        Long id) {
+        return ResponseEntity.ok(usuarioService.atualizaEndereco(id, dto));
+    }
+    @PutMapping("/telefone")
+    public ResponseEntity<TelefoneDTO> autualizaTelefone (@RequestBody TelefoneDTO dto,  @RequestParam("id")
+                                                        Long id){
+        return ResponseEntity.ok(usuarioService.atualizaTelefone(id, dto));
+    }
 
 
 }
