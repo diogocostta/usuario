@@ -4,6 +4,7 @@ import com.diogo.usuario.business.UsuarioService;
 import com.diogo.usuario.business.dto.EnderecoDTO;
 import com.diogo.usuario.business.dto.TelefoneDTO;
 import com.diogo.usuario.business.dto.UsuarioDTO;
+import com.diogo.usuario.infrastructure.entity.Endereco;
 import com.diogo.usuario.infrastructure.entity.Telefone;
 import com.diogo.usuario.infrastructure.entity.Usuario;
 import com.diogo.usuario.infrastructure.security.JwtUtil;
@@ -62,6 +63,14 @@ public class UsuarioController {
                                                         Long id){
         return ResponseEntity.ok(usuarioService.atualizaTelefone(id, dto));
     }
-
-
+    @PostMapping("/endereco")
+    public ResponseEntity<EnderecoDTO> cadastraEndereco (@RequestBody EnderecoDTO dto,
+                                                         @RequestHeader("Authorization") String token){
+        return ResponseEntity.ok(usuarioService.cadastraEndereco(token, dto));
+    }
+    @PostMapping("/telefone")
+    public ResponseEntity<TelefoneDTO> cadastraTelefone (@RequestBody TelefoneDTO dto,
+                                                         @RequestHeader("Authorization") String token){
+        return ResponseEntity.ok(usuarioService.cadastraTelefone(token,dto));
+    }
 }
