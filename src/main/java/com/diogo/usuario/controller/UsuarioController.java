@@ -73,22 +73,4 @@ public class UsuarioController {
                                                          @RequestHeader("Authorization") String token){
         return ResponseEntity.ok(usuarioService.cadastraTelefone(token,dto));
     }
-//
-//    @PostMapping("/login")
-//    public String login(@RequestBody UsuarioDTO usuarioDTO){
-//        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-//                usuarioDTO.getEmail(), usuarioDTO.getSenha())
-//        );
-//        return "Bearer " + jwtUtil.generateToken(authentication.getName());
-//    }
-//
-//    @GetMapping
-//    public ResponseEntity<Usuario> buscaUsuarioPorEmail(@RequestParam ("email")String email){
-//        return ResponseEntity.ok(usuarioService.buscarUsuarioPorEmail(email));
-//    }
-//    @DeleteMapping("/{email}")
-//    public ResponseEntity<Void> deletarUsuarioPorEmail (@PathVariable String email){
-//        usuarioService.deletarUsuarioPorEmail(email);
-//        return ResponseEntity.ok().build();
-//    }
 }
