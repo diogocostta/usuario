@@ -32,6 +32,7 @@ public class SecurityConfig {
     }
 
     // Configuração do filtro de segurança
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // Cria uma instância do JwtRequestFilter com JwtUtil e UserDetailsService
